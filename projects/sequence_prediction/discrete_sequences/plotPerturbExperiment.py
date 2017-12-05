@@ -49,14 +49,11 @@ if __name__ == '__main__':
   experiments.append(os.path.join("tm/results",
                                   "high-order-distributed-random-perturbed/seed0.0",
                                   "0.log"))
-  experiments.append(os.path.join("tm/results",
-                                  "high-order-distributed-random-perturbed/seed0.0",
-                                  "0.log"))
 
-  # experiments.append(os.path.join("lstm/results",
-  #                                 "high-order-distributed-random-perturbed",
-  #                                 "seed0.0learning_window3000.0",
-  #                                 "0.log"))
+  experiments.append(os.path.join("lstm/results",
+                                   "high-order-distributed-random-perturbed",
+                                   "seed0.0learning_window1000.0",
+                                   "0.log"))
 
   # experiments.append(os.path.join("tdnn/results",
   #                                 "high-order-distributed-random-perturbed/seed0.0learning_window3000.0",

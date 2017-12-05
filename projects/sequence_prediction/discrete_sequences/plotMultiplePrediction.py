@@ -41,10 +41,10 @@ if __name__ == '__main__':
 
   experiments = []
   for num_prediction in [2, 4]:
-    experiments.append(os.path.join("tm/results",
-                                "high-order-distributed-random-multiple-predictions",
-                                "num_predictions{:2.1f}".format(num_prediction),
-                                "0.log"))
+      experiments.append(os.path.join("tm/results",
+                                 "high-order-distributed-random-multiple-predictions",
+                                 "num_predictions{:2.1f}seed0.0".format(num_prediction),
+                                 "0.log"))
 
   # for num_prediction in [2, 4]:
   #   experiments.append(os.path.join("lstm/results",
@@ -52,11 +52,11 @@ if __name__ == '__main__':
   #                               "seed0.0num_predictions{:2.1f}".format(num_prediction),
   #                               "0.log"))
 
-  for num_prediction in [2, 4]:
-    experiments.append(os.path.join("lstm/results",
-                                "high-order-basic-random-multiple-predictions",
-                                "seed0.0num_predictions{:2.1f}".format(num_prediction),
-                                "0.log"))
+  # for num_prediction in [2, 4]:
+  #   experiments.append(os.path.join("lstm/results",
+  #                               "high-order-basic-random-multiple-predictions",
+  #                               "seed0.0num_predictions{:2.1f}".format(num_prediction),
+  #                               "0.log"))
 
   # for num_prediction in [2, 4]:
   #   experiments.append(os.path.join("elm/results",
@@ -91,3 +91,4 @@ if __name__ == '__main__':
 
   # pyplot.legend(['LSTM', 'HTM'])
   pyplot.savefig('./result/model_performance_multiple_prediction.pdf')
+  pyplot.show(block=True)

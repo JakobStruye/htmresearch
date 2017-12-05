@@ -39,18 +39,24 @@ if __name__ == '__main__':
 
   experiments = []
 
-  experiments.append(os.path.join("tdnn/results",
-                                  "high-order-distributed-random-perturbed-long-window/seed0.0learning_window3000.0",
-                                  "0.log"))
+  # experiments.append(os.path.join("tdnn/results",
+  #                                 "high-order-distributed-random-perturbed-long-window/seed0.0learning_window3000.0",
+  #                                 "0.log"))
 
   experiments.append(os.path.join("tm/results",
                                   "high-order-distributed-random-perturbed/seed0.0",
                                   "0.log"))
-
-  experiments.append(os.path.join("lstm/results",
-                                  "high-order-distributed-random-perturbed",
-                                  "seed0.0learning_window3000.0",
+  experiments.append(os.path.join("tm/results",
+                                  "high-order-distributed-random-perturbed/seed0.0",
                                   "0.log"))
+  experiments.append(os.path.join("tm/results",
+                                  "high-order-distributed-random-perturbed/seed0.0",
+                                  "0.log"))
+
+  # experiments.append(os.path.join("lstm/results",
+  #                                 "high-order-distributed-random-perturbed",
+  #                                 "seed0.0learning_window3000.0",
+  #                                 "0.log"))
 
   # experiments.append(os.path.join("tdnn/results",
   #                                 "high-order-distributed-random-perturbed/seed0.0learning_window3000.0",
@@ -84,5 +90,4 @@ if __name__ == '__main__':
   plt.axvline(x=10000, color='k')
   plt.legend(['TDNN', 'HTM', 'LSTM-3000'], loc=4)
   plt.savefig('./result/model_performance_high_order_prediction.pdf')
-
-
+  plt.show(block=True)

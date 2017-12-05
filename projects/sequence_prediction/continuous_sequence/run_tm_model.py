@@ -308,21 +308,21 @@ if __name__ == "__main__":
     overlapDutyCycle = np.zeros(sp.getColumnDimensions(), dtype=np.float32)
     sp.getOverlapDutyCycles(overlapDutyCycle)
 
-    if i % 100 == 0 and i > 0:
-      plt.figure(1)
-      plt.clf()
-      plt.subplot(2, 2, 1)
-      plt.hist(overlapDutyCycle)
-      plt.xlabel('overlapDutyCycle')
+    #if i % 100 == 0 and i > 0:
+    #  plt.figure(1)
+    #  plt.clf()
+    #  plt.subplot(2, 2, 1)
+    #  plt.hist(overlapDutyCycle)
+    #  plt.xlabel('overlapDutyCycle')
 
-      plt.subplot(2, 2, 2)
-      plt.hist(activeDutyCycle)
-      plt.xlabel('activeDutyCycle-1000')
+    #  plt.subplot(2, 2, 2)
+    #  plt.hist(activeDutyCycle)
+    #  plt.xlabel('activeDutyCycle-1000')
 
-      plt.subplot(2, 2, 3)
-      plt.hist(spActiveCellsCount)
-      plt.xlabel('activeDutyCycle-Total')
-      plt.draw()
+    #  plt.subplot(2, 2, 3)
+    #  plt.hist(spActiveCellsCount)
+    #  plt.xlabel('activeDutyCycle-Total')
+    #  plt.draw()
 
     tp = model._getTPRegion()
     tm = tp.getSelf()._tfdr
@@ -395,23 +395,23 @@ if __name__ == "__main__":
         likelihood_display = likelihoodsVecAll[:, :i+1]
         xl = [0, (i)]
 
-      plt.figure(2)
-      plt.clf()
-      plt.imshow(likelihood_display,
-                 extent=(time_step_display[0], time_step_display[-1], 0, 40000),
-                 interpolation='nearest', aspect='auto',
-                 origin='lower', cmap='Reds')
-      plt.colorbar()
-      plt.plot(time_step_display, actual_data_display, 'k', label='Data')
-      plt.plot(time_step_display, predict_data_ML_display, 'b', label='Best Prediction')
-      plt.xlim(xl)
-      plt.xlabel('Time')
-      plt.ylabel('Prediction')
-      # plt.title('TM, useTimeOfDay='+str(True)+' '+dataSet+' test neg LL = '+str(np.nanmean(negLL)))
-      plt.xlim([17020, 17300])
-      plt.ylim([0, 30000])
-      plt.clim([0, 1])
-      plt.draw()
+      #plt.figure(2)
+      #plt.clf()
+      #plt.imshow(likelihood_display,
+      #           extent=(time_step_display[0], time_step_display[-1], 0, 40000),
+      #           interpolation='nearest', aspect='auto',
+      #           origin='lower', cmap='Reds')
+      #plt.colorbar()
+      #plt.plot(time_step_display, actual_data_display, 'k', label='Data')
+      #plt.plot(time_step_display, predict_data_ML_display, 'b', label='Best Prediction')
+      #plt.xlim(xl)
+      #plt.xlabel('Time')
+      #plt.ylabel('Prediction')
+      ##### plt.title('TM, useTimeOfDay='+str(True)+' '+dataSet+' test neg LL = '+str(np.nanmean(negLL)))
+      #plt.xlim([17020, 17300])
+      #plt.ylim([0, 30000])
+      #plt.clim([0, 1])
+      #plt.draw()
 
   predData_TM_n_step = np.roll(np.array(predict_data_ML), _options.stepsAhead)
   nTest = len(actual_data) - nTrain - _options.stepsAhead
@@ -444,30 +444,30 @@ if __name__ == "__main__":
   negLL = computeLikelihood(predictions, truth, encoder)
   negLL[:5000] = np.nan
   x = range(len(negLL))
-  plt.figure()
-  plotAccuracy((negLL, x), truth, window=480, errorType='negLL')
+  #plt.figure()
+  #plotAccuracy((negLL, x), truth, window=480, errorType='negLL')
 
   np.save('./result/'+dataSet+classifierType+'TMprediction.npy', predictions)
   np.save('./result/'+dataSet+classifierType+'TMtruth.npy', truth)
 
-  plt.figure()
+  #plt.figure()
   activeCellNumAvg = movingAverage(activeCellNum, 100)
-  plt.plot(np.array(activeCellNumAvg)/tm.numberOfCells())
-  plt.xlabel('data records')
-  plt.ylabel('sparsity')
-  plt.xlim([0, 5000])
+  #plt.plot(np.array(activeCellNumAvg)/tm.numberOfCells())
+  #plt.xlabel('data records')
+  #plt.ylabel('sparsity')
+  #plt.xlim([0, 5000])
 
-  plt.savefig('result/sparsity_over_training.pdf')
+  #plt.savefig('result/sparsity_over_training.pdf')
 
-  plt.figure()
+  #plt.figure()
   predCellNumAvg = movingAverage(predCellNum, 100)
   predSegmentNumAvg = movingAverage(predSegmentNum, 100)
   # plt.plot(np.array(predCellNumAvg))
-  plt.plot(np.array(predSegmentNumAvg),'r', label='NMDA spike')
-  plt.plot(activeCellNumAvg,'b', label='spikes')
-  plt.xlabel('data records')
-  plt.ylabel('NMDA spike #')
-  plt.legend()
-  plt.xlim([0, 5000])
-  plt.ylim([0, 42])
-  plt.savefig('result/nmda_spike_over_training.pdf')
+  #plt.plot(np.array(predSegmentNumAvg),'r', label='NMDA spike')
+  #plt.plot(activeCellNumAvg,'b', label='spikes')
+  #plt.xlabel('data records')
+  #plt.ylabel('NMDA spike #')
+  #plt.legend()
+  #plt.xlim([0, 5000])
+  #plt.ylim([0, 42])
+  #plt.savefig('result/nmda_spike_over_training.pdf')
